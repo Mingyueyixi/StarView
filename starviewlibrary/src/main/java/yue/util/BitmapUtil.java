@@ -1,4 +1,4 @@
-package yue.starview;
+package yue.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
