@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="StarsView">
+    <declare-styleable name="Star">
         <attr name="starSrc" format="integer"></attr>
         <attr name="starCount" format="integer"></attr>
         <attr name="starSize" format="dimension"></attr>
+        <attr name="hormCount" format="integer"></attr>
+        <attr name="size" format="dimension"></attr>
+        <attr name="starColor" format="color"></attr>
+        <attr name="strokeWidth" format="dimension"></attr>
+        <attr name="depth" format="float"></attr>
+        <attr name="rotate" format="float"></attr>
     </declare-styleable>
+
 </resources>

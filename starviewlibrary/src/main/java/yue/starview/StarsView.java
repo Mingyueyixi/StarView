@@ -7,12 +7,14 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.icu.lang.UCharacter;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+
+import yue.util.BitmapUtil;
+
 
 public class StarsView extends View{
 
@@ -47,10 +49,10 @@ public class StarsView extends View{
     public StarsView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         Resources res = context.getResources();
-        TypedArray a = res.obtainAttributes(attrs, R.styleable.StarsView);
-        starResId = a.getResourceId(R.styleable.StarsView_starSrc, R.drawable.ic_star_yellow);
-        starCount = a.getInt(R.styleable.StarsView_starCount,DEFAULT_COUNT);
-        starSize = a.getDimensionPixelSize(R.styleable.StarsView_starSize, DEFAULT_SIZE);
+        TypedArray a = res.obtainAttributes(attrs, R.styleable.Star);
+        starResId = a.getResourceId(R.styleable.Star_starSrc, R.drawable.ic_star_yellow);
+        starCount = a.getInt(R.styleable.Star_starCount,DEFAULT_COUNT);
+        starSize = a.getDimensionPixelSize(R.styleable.Star_starSize, DEFAULT_SIZE);
         a.recycle();
 
         starDrawable = res.getDrawable(starResId);
@@ -113,12 +115,12 @@ public class StarsView extends View{
     }
 
     /**
-     * @param context
+     * @param context 上下文
      * @return 屏幕高度
      */
     public static int getScreenHeight(Context context){
-        DisplayMetrics outMetrics = getScreenSize(context);
-        return outMetrics.widthPixels;
+
+        return getScreenSize(context).widthPixels;
     }
     /**
      * @param context
