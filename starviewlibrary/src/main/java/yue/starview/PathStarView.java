@@ -36,12 +36,8 @@ public class PathStarView extends View {
     }
 
     public PathStarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    public PathStarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Star, defStyleAttr, defStyleRes);
+        super(context,attrs,defStyleAttr);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Star);
         hormCount = a.getInt(R.styleable.Star_hormCount, 5);
         depth = a.getFloat(R.styleable.Star_depth, 0.6f);
         starColor = a.getColor(R.styleable.Star_starColor, Color.YELLOW);
@@ -51,6 +47,10 @@ public class PathStarView extends View {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(starColor);
     }
+
+//    public PathStarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//    }
 
     @Override
     protected void onDraw(Canvas canvas) {

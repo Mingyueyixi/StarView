@@ -59,7 +59,10 @@ public class StarPathUtil {
 
             starPath.close();
             Matrix m = new Matrix();
+            //旋转角度
             m.setRotate(rotate);
+            //计算时坐标系平移(r,0)，现路径整体平移过去，以符合坐标系。
+            m.setTranslate((float) r,0);
             starPath.transform(m);
             return starPath;
         }

@@ -52,10 +52,7 @@ public class StarDrawable extends Drawable {
         if(starPath == null){
             starPath = StarPathUtil.linePath(r,mHormCount,depth,rotate);
         }
-        canvas.save();
-        canvas.translate((float) r,0);
         canvas.drawPath(starPath,mPaint);
-        canvas.restore();
     }
 
     @Override
