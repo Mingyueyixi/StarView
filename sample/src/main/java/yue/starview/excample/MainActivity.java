@@ -1,46 +1,56 @@
 package yue.starview.excample;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 
-import yue.starview.OnStarClickListener;
-import yue.starview.StarsView;
+public class MainActivity extends BaseActivity {
 
-public class MainActivity extends BaseActivity implements OnStarClickListener{
+
+    private final static String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View contentView = getLayoutInflater().inflate(R.layout.activity_main,null,false);
-        setContentView(contentView);
+        setContentView(R.layout.layout_main);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        addFragment(new StarViewFragment(),
+                new StarDrawableFragment(),
+                new PathStarViewFragment());
 
-        listenAllStarView(contentView);
-
-    }
-    /**
-     * @param root
-     * 监听所有StarView
-     */
-    private void listenAllStarView(View root) {
-        if (root instanceof ViewGroup) {//Android的布局继承自ViewGroup
-            ViewGroup parent = (ViewGroup) root;
-            for (int i = 0; i < parent.getChildCount(); i++) {
-                listenAllStarView(parent.getChildAt(i));
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return getFragment(position);
             }
-        }else if (root instanceof StarsView){
-            ((StarsView)root).setOnStarClickListener(this);
-            Log.w("测试",">");
-        }
-    }
 
-    @Override
-    public void onClick(View view, int position) {
-        int flag = position+1;
-        Log.w("测试",flag+"");
-        Snackbar.make(view,"第"+flag+"颗星星",Snackbar.LENGTH_INDEFINITE).show();
+            @Override
+            public CharSequence getPageTitle(int position) {
+                String title = getFragment(position).getClass().getSimpleName();
+                title = title.replaceAll("Fragment","");
+                return title;
+            }
 
-    }
+            @Override
+            public int getCount() {
+                return getFragmentListSize();
+            }
+        });
+
+        tabLayout.setupWithViewPager(viewPager);
+        viewPager.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+}
+
+
 }

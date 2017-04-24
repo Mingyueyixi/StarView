@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <yue.starview.PathStarView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:starColor="#006688" />
+
+    <yue.starview.PathStarView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:hormCount="4"
+        app:starColor="#006688" />
+
+    <yue.starview.PathStarView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:hormCount="3"
+        app:starColor="#006688" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        </android.support.v7.widget.RecyclerView>
+</LinearLayout>
