@@ -5,11 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <yue.starview.PathStarView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:starColor="#006688" />
+        app:hormCount = "3"
+        app:starColor="#aa7700" />
 
     <yue.starview.PathStarView
         android:layout_width="40dp"
@@ -20,12 +25,66 @@
     <yue.starview.PathStarView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:hormCount="3"
-        app:starColor="#006688" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
+         />
+        <yue.starview.PathStarView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:hormCount="6"
+            app:depth="0.4"
+            app:starColor="#008822"
+            />
+        <yue.starview.PathStarView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:hormCount="7"
+            app:depth="0.95"
+            app:starColor="#990022"/>
+        <yue.starview.PathStarView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:hormCount="8"
+            app:depth="0.7"
+            app:starColor="#990022"/>
+        <yue.starview.PathStarView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:hormCount="20"
+            app:depth="0.75"
+            app:starColor="#55aa99"/>
+        <yue.starview.PathStarView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:hormCount="30"
+            app:depth="0.95"
+            app:starColor="#55aa99"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_starSize"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
-        </android.support.v7.widget.RecyclerView>
+        android:text="星星大小"/>
+    <Button
+        android:id="@+id/btn_starHorm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="星星角数"/>
+
+    <Button
+        android:id="@+id/btn_depth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="深度参数depth"/>
+    <Button
+        android:id="@+id/btn_rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="旋转参数rotate"/>
+    <Button
+        android:id="@+id/btn_many"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="综合"/>
+
+
 </LinearLayout>

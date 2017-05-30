@@ -9,6 +9,7 @@ import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 
 import yue.util.StarPathUtil;
 
@@ -55,14 +56,17 @@ public class PathStarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.save();
+        canvas.rotate(rotate,canvas.getWidth()/2.0f,canvas.getHeight()/2);
         canvas.drawPath(starPath, paint);
+        canvas.restore();
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         final double r = w < h ? w / 2d : h / 2d;
-        starPath = StarPathUtil.linePath(r, hormCount, depth,rotate);
+        starPath = StarPathUtil.linePath(r, hormCount, depth);
     }
 
     public int getFlag() {
@@ -121,7 +125,6 @@ public class PathStarView extends View {
         boolean refresh = false;
         if (hormCount != this.hormCount) {
             this.starColor = starColor;
-            paint.setColor(starColor);
             refresh = true;
         }
         if (this.hormCount != hormCount) {
@@ -140,12 +143,38 @@ public class PathStarView extends View {
             this.rotate = rotate;
             refresh = true;
         }
+        if(this.starColor != starColor){
+            this.starColor = starColor;
+            paint.setColor(starColor);
+            refresh = true;
+        }
         updateStar(refresh);
     }
     private void updateStar(boolean refresh){
         if (refresh){
-            
+            int w = getWidth();
+            int h = getHeight();
+            final double r = w < h ? w / 2d : h / 2d;
+            starPath = StarPathUtil.linePath(r, hormCount, depth);
             invalidate();
         }
+    }
+
+
+    public void setWidth(int width){
+        ViewGroup.LayoutParams p = getLayoutParams();
+        if (p==null){
+            p = new ViewGroup.LayoutParams(0,0);
+        }
+        p.width = width;
+        setLayoutParams(p);
+    }
+    public void setHeight(int height){
+        ViewGroup.LayoutParams p = getLayoutParams();
+        if (p==null){
+            p = new ViewGroup.LayoutParams(0,0);
+        }
+        p.height = height;
+        setLayoutParams(p);
     }
 }

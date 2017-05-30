@@ -17,7 +17,7 @@ import yue.util.StarPathUtil;
  */
 
 public class StarDrawable extends Drawable {
-    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private Paint mPaint;
     private float rotate;
     private int mHormCount;
     private int mStarColor;
@@ -44,15 +44,21 @@ public class StarDrawable extends Drawable {
 
         int w = getIntrinsicWidth();
         r = w/2.0;
-        starPath = StarPathUtil.linePath(r,hormCount,depth,rotate);
+        starPath = StarPathUtil.linePath(r,hormCount,depth);
+
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setColor(starColor);
     }
 
     @Override
     public void draw(@NonNull Canvas canvas) {
         if(starPath == null){
-            starPath = StarPathUtil.linePath(r,mHormCount,depth,rotate);
+            starPath = StarPathUtil.linePath(r,mHormCount,depth);
         }
-        canvas.drawPath(starPath,mPaint);
+        canvas.save();
+        canvas.rotate(rotate,canvas.getWidth()/2.0f,canvas.getHeight()/2);
+        canvas.drawPath(starPath, mPaint);
+        canvas.restore();
     }
 
     @Override
@@ -101,7 +107,9 @@ public class StarDrawable extends Drawable {
     }
 
     public void setStarColor(int mStarColor) {
+        mPaint.setColor(mStarColor);
         this.mStarColor = mStarColor;
+
     }
 
     public float getStarSize() {

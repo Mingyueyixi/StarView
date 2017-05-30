@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PathStartViewPre.ManyStarActivity"></activity>
+        <activity android:name=".PathStartViewPre.RotateActivity"></activity>
+        <activity android:name=".PathStartViewPre.StarSizeActivity"></activity>
+        <activity android:name=".PathStartViewPre.DepthActivity"></activity>
+        <activity android:name=".PathStartViewPre.StarHormActivity"/>
     </application>
 
 </manifest>
